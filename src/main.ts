@@ -1,6 +1,10 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideStore } from '@ngrx/store';
 import { AppComponent } from './app/app.component';
+import { calculatorReducer } from './app/store/calculator.reducer';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideStore({ calculator: calculatorReducer }),
+  ],
+}).catch(err => console.error(err));
